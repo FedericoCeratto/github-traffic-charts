@@ -1,0 +1,12 @@
+Source: github-traffic-charts
+Section: unknown
+Priority: optional
+Maintainer: Federico Ceratto <federico.ceratto@gmail.com>
+Build-Depends: debhelper (>= 9), dh-systemd
+Standards-Version: 4.0.0
+
+Package: github-traffic-charts
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, libjs-chartjs
+Description: GitHub traffic charts
+ Collect traffic data and generate charts

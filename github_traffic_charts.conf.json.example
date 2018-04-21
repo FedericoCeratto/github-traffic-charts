@@ -1,0 +1,12 @@
+
+{
+  "format-version": 1,
+  "charted-days": 14,
+  "charted-weeks": 4,
+  "max-repos-per-chart": 12,
+  "token": "REPLACEME",
+  "repos": {
+    "user:REPLACEME": [
+    ]
+  }
+}

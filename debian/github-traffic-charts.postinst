@@ -1,0 +1,16 @@
+#!/bin/sh
+
+set -e
+
+if [ "$1" = "configure" ]; then
+    if ! getent passwd github-traffic-charts >/dev/null; then
+        adduser --quiet --system --group --home /var/lib/github-traffic-charts github-traffic-charts
+    fi
+    mkdir -p /var/lib/github_traffic_charts
+    chown github-traffic-charts:github-traffic-charts /var/lib/github_traffic_charts
+
+fi
+
+#DEBHELPER#
+
+exit 0

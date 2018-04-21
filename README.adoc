@@ -1,0 +1,68 @@
+
+=== GitHub traffic charts
+
+image:https://img.shields.io/badge/status-alpha-orange.svg[badge]
+image:https://img.shields.io/badge/version-0.1.0-orange.svg[badge]
+image:https://img.shields.io/badge/License-GPL%20v3-blue.svg[License]
+
+GitHub publishes project view and clone metrics only for the owner and with 14 days of history.
+
+This daemon collect metrics for multiple users/orgs/projects and generates HTML charts every day.
+
+It requires a GitHub "Personal access token" with "repo" scope.
+
+==== System-wide installation
+
+Install nim on Debian/Ubuntu with:
+
+    sudo apt install nim
+
+Build and install the package with:
+
+    nimble build_deb
+    sudo dpkg -i ../github-traffic-charts_*.deb
+
+Configure /etc/github_traffic_charts.conf.json and restart the daemon
+
+Find outputs in /var/lib/github_traffic_charts/output/
+
+Monitor with:
+
+    sudo journalctl -f -u github-traffic-charts
+
+==== Local run
+
+Build a binary with:
+
+    nimble build
+
+Configure ./github_traffic_charts.conf.json
+
+Run:
+
+    ./github-traffic-charts
+
+==== Configuration
+
+If the user:... or org:... blocks are left empty, the daemon will scan all existing projects.
+
+Example:
+[source,json]
+----
+{
+  "format-version": 1,
+  "charted-days": 14,
+  "charted-weeks": 4,
+  "max-repos-per-chart": 12,
+  "token": "REPLACEME",
+  "repos": {
+    "user:REPLACEME": [
+    ],
+    "user:REPLACEME": [
+    ],
+    "org:REPLACEME": [
+    ],
+  }
+}
+
+----
